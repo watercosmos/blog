@@ -3,6 +3,7 @@ package com.lhy.blog.controller;
 import com.lhy.blog.constant.Message;
 import com.lhy.blog.dict.ErrorCode;
 import com.lhy.blog.domain.User;
+import com.lhy.blog.exception.BusinessException;
 import com.lhy.blog.service.UserService;
 import com.lhy.blog.vo.Result;
 import org.slf4j.Logger;
@@ -24,7 +25,7 @@ import javax.validation.Valid;
 @RequestMapping("/users")
 public class UserController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+    private final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
     @Autowired
     UserService userService;
@@ -63,6 +64,11 @@ public class UserController {
         LOGGER.info("deleteUserById: userId = {}", userId);
         userService.deleteUser(userId);
         return Result.builder().data(Message.OPERATE_SUCCESS).success().build();
+    }
+
+    @RequestMapping("/error")
+    public Result error() {
+        throw new BusinessException(Message.UNKNOWN_ERROR);
     }
 
 }

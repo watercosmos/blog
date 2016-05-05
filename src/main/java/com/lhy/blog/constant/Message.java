@@ -7,6 +7,8 @@ public class Message {
 
     public static final String OPERATE_SUCCESS = "操作成功";
 
+    public static final String UNKNOWN_ERROR = "未知错误";
+
     private Message() {}
 
 }
