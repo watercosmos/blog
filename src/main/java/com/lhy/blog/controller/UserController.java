@@ -5,11 +5,14 @@ import com.lhy.blog.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 /**
  * Created by lhy on 16/5/3.
@@ -30,13 +33,21 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public int insertUser(@RequestBody User user) {
+    public int insertUser(@Valid @RequestBody User user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            LOGGER.warn(bindingResult.toString());
+            return 0;
+        }
         LOGGER.info("insertUser: user = {}", user);
         return userService.insertUser(user);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public int updateUser(@RequestBody User user) {
+    public int updateUser(@Valid @RequestBody User user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            LOGGER.warn(bindingResult.toString());
+            return 0;
+        }
         LOGGER.info("updateUser: user = {}", user);
         return userService.updateUser(user);
     }

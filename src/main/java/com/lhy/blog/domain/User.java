@@ -1,5 +1,9 @@
 package com.lhy.blog.domain;
 
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.NotNull;
+
 /**
  * Created by lhy on 16/5/3.
  */
@@ -7,8 +11,11 @@ public class User {
 
     Integer id;
 
+    @NotNull
+    @Length(min = 1, max = 20)
     String account;
 
+    @NotNull
     String avatar;
 
     public Integer getId() {
