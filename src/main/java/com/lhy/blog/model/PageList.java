@@ -1,4 +1,4 @@
-package com.lhy.blog.vo;
+package com.lhy.blog.model;
 
 import com.google.common.collect.Lists;
 

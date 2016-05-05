@@ -5,7 +5,7 @@ import com.lhy.blog.dict.ErrorCode;
 import com.lhy.blog.domain.User;
 import com.lhy.blog.exception.BusinessException;
 import com.lhy.blog.service.UserService;
-import com.lhy.blog.vo.Result;
+import com.lhy.blog.model.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

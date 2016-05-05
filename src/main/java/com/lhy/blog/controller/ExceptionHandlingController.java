@@ -2,7 +2,7 @@ package com.lhy.blog.controller;
 
 import com.lhy.blog.dict.ErrorCode;
 import com.lhy.blog.exception.BusinessException;
-import com.lhy.blog.vo.Result;
+import com.lhy.blog.model.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;

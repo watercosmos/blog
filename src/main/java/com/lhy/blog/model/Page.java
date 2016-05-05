@@ -1,4 +1,4 @@
-package com.lhy.blog.vo;
+package com.lhy.blog.model;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
