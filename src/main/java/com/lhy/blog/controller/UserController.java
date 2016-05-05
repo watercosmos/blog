@@ -1,7 +1,10 @@
 package com.lhy.blog.controller;
 
+import com.lhy.blog.constant.Message;
+import com.lhy.blog.dict.ErrorCode;
 import com.lhy.blog.domain.User;
 import com.lhy.blog.service.UserService;
+import com.lhy.blog.vo.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,35 +30,39 @@ public class UserController {
     UserService userService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public User getUserById(@RequestParam("userId") Integer userId) {
+    public Result getUserById(@RequestParam("userId") Integer userId) {
         LOGGER.info("getUserById: userId = {}", userId);
-        return userService.getUserById(userId);
+        User user = userService.getUserById(userId);
+        return Result.builder().data(user).success().build();
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public int insertUser(@Valid @RequestBody User user, BindingResult bindingResult) {
+    public Result insertUser(@Valid @RequestBody User user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             LOGGER.warn(bindingResult.toString());
-            return 0;
+            return Result.builder().failed(ErrorCode.BAD_REQUEST).build();
         }
         LOGGER.info("insertUser: user = {}", user);
-        return userService.insertUser(user);
+        userService.insertUser(user);
+        return Result.builder().data(Message.OPERATE_SUCCESS).success().build();
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public int updateUser(@Valid @RequestBody User user, BindingResult bindingResult) {
+    public Result updateUser(@Valid @RequestBody User user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             LOGGER.warn(bindingResult.toString());
-            return 0;
+            return Result.builder().failed(ErrorCode.BAD_REQUEST).build();
         }
         LOGGER.info("updateUser: user = {}", user);
-        return userService.updateUser(user);
+        userService.updateUser(user);
+        return Result.builder().data(Message.OPERATE_SUCCESS).success().build();
     }
 
     @RequestMapping(method = RequestMethod.DELETE)
-    public int deleteUserById(@RequestParam("userId") Integer userId) {
+    public Result deleteUserById(@RequestParam("userId") Integer userId) {
         LOGGER.info("deleteUserById: userId = {}", userId);
-        return userService.deleteUser(userId);
+        userService.deleteUser(userId);
+        return Result.builder().data(Message.OPERATE_SUCCESS).success().build();
     }
 
 }
