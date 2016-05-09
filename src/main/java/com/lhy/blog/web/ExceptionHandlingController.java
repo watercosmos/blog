@@ -1,4 +1,4 @@
-package com.lhy.blog.controller;
+package com.lhy.blog.web;
 
 import com.lhy.blog.dict.ErrorCode;
 import com.lhy.blog.exception.BusinessException;
@@ -22,7 +22,7 @@ public class ExceptionHandlingController {
 
     @ExceptionHandler(BusinessException.class)
     public Result businessExceptionHandler(Exception exception, HttpServletRequest request) {
-        LOGGER.warn("Request: {} ({}) raised {}", request.getRequestURI(), request.getMethod(), exception);
+        LOGGER.warn("Request: {} {} raised {}", request.getMethod(), request.getRequestURI(), exception);
         return Result.builder().failed(ErrorCode.INTERNAL_SERVER_ERROR, exception.getMessage()).build();
     }
 }

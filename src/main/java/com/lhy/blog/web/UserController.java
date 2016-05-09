@@ -1,4 +1,4 @@
-package com.lhy.blog.controller;
+package com.lhy.blog.web;
 
 import com.lhy.blog.constant.Message;
 import com.lhy.blog.dict.ErrorCode;
@@ -54,7 +54,7 @@ public class UserController {
             LOGGER.warn(bindingResult.toString());
             return Result.builder().failed(ErrorCode.BAD_REQUEST).build();
         }
-        LOGGER.info("updateUser: user = {}", user);
+        LOGGER.info("updateUser: {}", user);
         userService.updateUser(user);
         return Result.builder().data(Message.OPERATE_SUCCESS).success().build();
     }
