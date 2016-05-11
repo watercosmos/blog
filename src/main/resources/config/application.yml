@@ -1,15 +1,19 @@
 spring:
   profiles.active: local
 
+  datasource:
+    url: "jdbc:mysql://localhost:3306/blog?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&useSSL=false"
+
 logging:
-  config: "src/main/resources/config/log4j2-${spring.profiles.active}.properties"
+  config: "src/main/resources/config/log4j2.yml"
+
+
 
 ---
 
 spring:
   profiles: local
   datasource:
-      url: "jdbc:mysql://localhost:3306/blog?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&useSSL=false"
       username: root
       password: liuhanyu
       driver-class-name: com.mysql.jdbc.Driver
@@ -19,9 +23,8 @@ spring:
 spring:
   profiles: test
   datasource:
-      url: "jdbc:mysql://localhost:3306/blog?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&useSSL=false"
       username: root
-      password: liuhanyu
+      password: wrong
       driver-class-name: com.mysql.jdbc.Driver
 
 ---
@@ -29,7 +32,6 @@ spring:
 spring:
   profiles: stage
   datasource:
-      url: "jdbc:mysql://localhost:3306/blog?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&useSSL=false"
       username: root
       password: liuhanyu
       driver-class-name: com.mysql.jdbc.Driver
@@ -39,7 +41,6 @@ spring:
 spring:
   profiles: prod
   datasource:
-    url: "jdbc:mysql://localhost:3306/blog?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&useSSL=false"
     username: root
     password: liuhanyu
     driver-class-name: com.mysql.jdbc.Driver

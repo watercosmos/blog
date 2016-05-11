@@ -1,0 +1,28 @@
+Configuration:
+  status: debug
+  name: local
+
+  Appenders:
+    Console:
+      name: console
+      target: SYSTEM_OUT
+      PatternLayout:
+        Pattern: "%d{DEFAULT} [%t] %-5p (%C{1}:%L) - %m%n"
+        charset: UTF-8
+
+  Loggers:
+    Root:
+      level: info
+      AppenderRef:
+        ref: console
+    Logger:
+      - name: com.lhy.blog.web
+        level: warn
+        additivity: false
+        AppenderRef:
+          ref: console
+      - name: com.lhy.blog.service
+        level: info
+        additivity: false
+        AppenderRef:
+          ref: console
