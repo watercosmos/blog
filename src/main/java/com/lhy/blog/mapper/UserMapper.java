@@ -19,8 +19,8 @@ public interface UserMapper {
 
     @Results({
             @Result(column = "id", property = "id"),
-            @Result(column = "account", property = "avatar"),
-            @Result(column = "avatar", property = "account")
+            @Result(column = "account", property = "account"),
+            @Result(column = "avatar", property = "avatar")
     })
     @SelectProvider(type = UserSqlBuilder.class, method = "selectById")
     User getUserById(Integer userId);
