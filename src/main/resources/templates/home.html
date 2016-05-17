@@ -8,5 +8,21 @@
 </head>
 <body>
     <p th:text="${welcome}">Welcome to index.</p>
+
+    <form action="/users" method="get">
+        <label for="userId">User ID: </label>
+        <input id="userId" type="text" name="userId"/>
+        <input type="submit" />
+    </form>
+
+    <form action="/users" method="post" enctype="application/json">
+        <label for="account">Account: </label>
+        <input id="account" type="text" name="account"/>
+        <label for="avatar">Avatar: </label>
+        <input id="avatar" type="text" name="avatar"/>
+        <input type="submit" />
+    </form>
+
 </body>
+
 </html>

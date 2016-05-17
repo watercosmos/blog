@@ -1,5 +1,6 @@
 package com.lhy.blog.web;
 
+import com.google.common.base.Preconditions;
 import com.lhy.blog.constant.Message;
 import com.lhy.blog.dict.ErrorCode;
 import com.lhy.blog.domain.User;
@@ -34,6 +35,7 @@ public class UserController {
     public Result getUserById(@RequestParam("userId") Integer userId) {
         LOGGER.info("getUserById: userId = {}", userId);
         User user = userService.getUserById(userId);
+        Preconditions.checkNotNull(user, Message.NULL_CONTENT);
         return Result.builder().data(user).success().build();
     }
 

@@ -17,7 +17,7 @@ Configuration:
         ref: console
     Logger:
       - name: com.lhy.blog.web
-        level: warn
+        level: info
         additivity: false
         AppenderRef:
           ref: console

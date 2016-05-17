@@ -9,6 +9,8 @@ public class Message {
 
     public static final String UNKNOWN_ERROR = "未知错误";
 
+    public static final String NULL_CONTENT = "内容为空";
+
     private Message() {}
 
 }

@@ -25,4 +25,10 @@ public class ExceptionHandlingController {
         LOGGER.warn("Request: {} {} raised {}", request.getMethod(), request.getRequestURI(), exception);
         return Result.builder().failed(ErrorCode.INTERNAL_SERVER_ERROR, exception.getMessage()).build();
     }
+
+    @ExceptionHandler(NullPointerException.class)
+    public Result nullPointerExceptionHandler(Exception exception, HttpServletRequest request) {
+        LOGGER.warn("Request: {} {} raised {}", request.getMethod(), request.getRequestURI(), exception);
+        return Result.builder().failed(ErrorCode.BAD_REQUEST, exception.getMessage()).build();
+    }
 }
